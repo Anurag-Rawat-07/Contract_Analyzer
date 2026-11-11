@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from routes import contracts
 from database import init_db 
 
 app=FastAPI(
@@ -24,3 +25,5 @@ async def root():
             "GET /analysis/contract/{contract_id}": "Retrieve a list of all analyses for a specific contract by ID"
         }
     }
+
+app.include_router(contracts.router)
